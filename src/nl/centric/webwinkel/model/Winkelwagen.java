@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Winkelwagen {
+	
 	private Map<Integer, Integer> inhoud;
 	private List<Artikel> artikelen;
 	

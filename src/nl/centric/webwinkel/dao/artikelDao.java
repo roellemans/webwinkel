@@ -11,7 +11,7 @@ import javax.persistence.Query;
 import nl.centric.webwinkel.model.Artikel;
 
 @Stateful
-public class artikelDao {
+public class ArtikelDao {
 	@PersistenceContext(unitName = "Webwinkel", type = PersistenceContextType.EXTENDED)
     private EntityManager entityManager;
 	
@@ -28,8 +28,14 @@ public class artikelDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Artikel> getAlleArtikelen() throws Exception {
+	public List<Artikel> getArtikelen() throws Exception {
         Query query = entityManager.createQuery("SELECT a from Atikel as a");
         return query.getResultList();
+    }
+	
+	public Artikel getArtikel(int id) throws Exception {
+        Query query = entityManager.createQuery("SELECT a from Atikel as a where a.id = :id");
+        query.setParameter("id" , id);
+        return (Artikel) query.getSingleResult();
     }
 }
