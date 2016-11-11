@@ -1,18 +1,19 @@
 package nl.centric.webwinkel.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Artikel {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String naam;
 	private int aantal;
-	private BigDecimal prijs;
+	private Double prijs;
 	
 	public int getId() {
 		return id;
@@ -32,10 +33,10 @@ public class Artikel {
 	public void setAantal(int aantal) {
 		this.aantal = aantal;
 	}
-	public BigDecimal getPrijs() {
+	public Double getPrijs() {
 		return prijs;
 	}
-	public void setPrijs(BigDecimal prijs) {
+	public void setPrijs(Double prijs) {
 		this.prijs = prijs;
 	}
 	

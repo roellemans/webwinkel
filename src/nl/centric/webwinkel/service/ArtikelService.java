@@ -13,7 +13,7 @@ import nl.centric.webwinkel.model.Artikel;
 @Service
 public class ArtikelService {
 	
-	private ArtikelDao dao;
+	private ArtikelDao dao = new ArtikelDao();
 
 	public void addArtikel(Artikel a){
 		dao.addArtikel(a);
@@ -21,6 +21,10 @@ public class ArtikelService {
 	
 	public void removeArtikel(Artikel a){
 		dao.removeArtikel(a);
+	}
+	
+	public void updateArtikel(Artikel a){
+		dao.updateArtikel(a);
 	}
 	
 	public List<Artikel> getArtikelen() throws Exception{
