@@ -8,34 +8,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import nl.centric.webwinkel.model.Magazijn;
-import nl.centric.webwinkel.service.ArtikelService;
 
 /**
- * Servlet implementation class ControllerServlet
+ * Servlet implementation class WinkelwagenServlet
  */
-@WebServlet(urlPatterns = {"/Winkel"})
-public class ControllerServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/Winkelwagen"})
+public class WinkelwagenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ArtikelService service;
 
-	public ControllerServlet() {
+	public WinkelwagenServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Magazijn magazijn = new Magazijn();
-		service = new ArtikelService();
-		try {
-			magazijn = service.vulMagazijn();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
-		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/winkel.jsp");
-		request.setAttribute("magazijn", magazijn);
+		
+		HttpSession session = request.getSession();
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/winkelwagen.jsp");
+		request.setAttribute("winkelwagen", session.getAttribute("winkelwagen"));
 		dispatcher.forward(request, response);
 	
 	}

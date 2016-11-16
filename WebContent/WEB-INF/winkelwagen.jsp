@@ -17,50 +17,37 @@
 </head>
 <body>
 	<div class="page-header">
-		<h1 align="center">Webwinkel Roellemans voor al uw sportartikelen</h1>
+		<h1 align="center">Webwinkel Roellemans, uw winkelwagen</h1>
 	</div>
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/Webwinkel/Winkelwagen">Winkelwagen</a></li>
+				<li><a href="/Webwinkel/Winkel">terug naar winkel</a></li>
 			</ul>
 		</div>
 	</nav>
-
 	<div class="container">
 		<table class="table">
 			<thead>
-				<tr>
+				<tr><td
+						style='text-align: left; vertical-align: middle; font-weight: bold'>Aantal stuks</td>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>ID</td>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Naam</td>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Prijs</td>
-					<td
-						style='text-align: left; vertical-align: middle; font-weight: bold'>Naar
-						winkelwagen</td>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="voorraad" items="${magazijn.voorraad}">
-					<form name="artikelRij" method="Post">
+				<c:forEach var="artikelen" items="${winkelwagen.artikelen}">
 					<tr>
-						<td style='text-align: left; vertical-align: middle'><input
-							type="text" name="id" value="${voorraad.id}" /></td>
-						<td style='text-align: left; vertical-align: middle'>${voorraad.naam}</td>
-						<td style='text-align: left; vertical-align: middle'>${voorraad.prijs}</td>
-						<c:if test="${voorraad.aantal > 0}">
-							<td style='text-align: left; vertical-align: middle'><input
-								type="submit" value="+" /></td>
-						</c:if>
-						<c:if test="${voorraad.aantal < 1}">
-							<td style='text-align: left; vertical-align: middle'>Niet op
-								voorraad</td>
-						</c:if>
+						<td style='text-align: left; vertical-align: middle'><input type="text" name="aantalStuks" value="1" /></td>
+						<td style='text-align: left; vertical-align: middle'>${artikelen.id}</td>
+						<td style='text-align: left; vertical-align: middle'>${artikelen.naam}</td>
+						<td style='text-align: left; vertical-align: middle'>${artikelen.prijs}</td>
 					</tr>
-					</form>
 				</c:forEach>
 			</tbody>
 		</table>
