@@ -2,23 +2,22 @@ package nl.centric.webwinkel.dao;
 
 import java.util.List;
 
-import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import org.springframework.stereotype.Repository;
 
 import nl.centric.webwinkel.model.Artikel;
 
-@Stateful
+
+@Repository
 public class ArtikelDao {
-	
-	private EntityManagerFactory emf;
+		
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	public ArtikelDao() {
-		emf = Persistence.createEntityManagerFactory("webwinkel");
-		entityManager = emf.createEntityManager();
 	}
 	
 	public void addArtikel(Artikel a){
