@@ -7,9 +7,13 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="dao" class="nl.centric.webwinkel.dao.ArtikelDao" />
-	<bean id="service" class="nl.centric.webwinkel.service.ArtikelService" />
-	<bean id="controller" class="nl.centric.webwinkel.controller.ArtikelController" />
+	<context:component-scan base-package="nl.centric.webwinkel.service.ArtikelService nl.centric.webwinkel.controller.ArtikelController nl.centric.webwinkel.dao.ArtikelDao" />
+	<context:annotation-config />
+
+<!-- 	<bean id="artikelDao" class="nl.centric.webwinkel.dao.ArtikelDao"
+		autowire="byName" />
+	<bean id="artikelService" class="nl.centric.webwinkel.service.ArtikelService" />
+	<bean id="artikelController" class="nl.centric.webwinkel.controller.ArtikelController" /> -->
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -21,5 +25,6 @@
 		</property>
 	</bean>
 
-	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanProcessor" /> -->
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanProcessor" 
+		/> -->
 </beans>

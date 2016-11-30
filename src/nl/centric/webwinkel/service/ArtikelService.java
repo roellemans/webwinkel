@@ -12,7 +12,7 @@ import nl.centric.webwinkel.model.Artikel;
 import nl.centric.webwinkel.model.Magazijn;
 
 
-@Service ("service")
+@Service
 public class ArtikelService {
 	
 	@Autowired
