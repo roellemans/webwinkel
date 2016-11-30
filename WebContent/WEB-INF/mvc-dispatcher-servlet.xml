@@ -12,8 +12,9 @@
 		id="controller" class="nl.centric.webwinkel.controller.ArtikelController" 
 		/> -->
 
-	<context:component-scan base-package="nl.centric.webwinkel" />
 	<context:annotation-config />
+	<context:component-scan
+		base-package=" nl.centric.webwinkel.dao, nl.centric.webwinkel.service, nl.centric.webwinkel.controller" />
 
 
 	<bean
