@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import nl.centric.webwinkel.model.Artikel;
 
 
-@Repository
+@Repository("dao")
 public class ArtikelDao {
 		
 	@PersistenceContext

@@ -12,12 +12,12 @@ import nl.centric.webwinkel.model.Artikel;
 import nl.centric.webwinkel.model.Magazijn;
 
 
-@Service
+@Service ("service")
 public class ArtikelService {
 	
 	@Autowired
 	private ArtikelDao artikelDao;
-
+	
 	@Transactional
 	public void addArtikel(Artikel a){
 		artikelDao.addArtikel(a);
