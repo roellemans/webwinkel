@@ -7,9 +7,14 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="dao" class="nl.centric.webwinkel.dao.ArtikelDao" />
-	<bean id="service" class="nl.centric.webwinkel.service.ArtikelService" />
-	<bean id="controller" class="nl.centric.webwinkel.controller.ArtikelController" />
+	<!-- <bean id="dao" class="nl.centric.webwinkel.dao.ArtikelDao" /> <bean 
+		id="service" class="nl.centric.webwinkel.service.ArtikelService" /> <bean 
+		id="controller" class="nl.centric.webwinkel.controller.ArtikelController" 
+		/> -->
+
+	<context:component-scan base-package="nl.centric.webwinkel" />
+	<context:annotation-config />
+
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -21,5 +26,29 @@
 		</property>
 	</bean>
 
-	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanProcessor" /> -->
+	<bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource"
+		id="dataSource">
+		<property value="com.mysql.jdbc.Driver" name="driverClassName" />
+		<property value="jdbc:mysql://localhost:3306/webwinkelDB"
+			name="url" />
+		<property value="root" name="username" />
+		<property value="test1234" name="password" />
+	</bean>
+
+	<!-- EntityManagerFactory -->
+	<bean
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		id="entityManagerFactory">
+		<property name="persistenceUnitName" value="Webwinkel" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<!-- Transactions -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanProcessor" 
+		/> -->
 </beans>
