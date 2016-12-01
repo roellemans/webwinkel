@@ -42,8 +42,6 @@ public class ArtikelController {
 	public String doGetWinkel(HttpServletRequest request, HttpServletResponse response) {
 		Magazijn magazijn = new Magazijn();
 		try {
-			ApplicationContext context = new ClassPathXmlApplicationContext("mvc-dispatcher-servlet.xml");
-			ArtikelService artikelService = (ArtikelService) context.getBean(ArtikelService.class);
 			magazijn = artikelService.vulMagazijn();
 		} catch (Exception e) {
 			e.printStackTrace();
