@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import nl.centric.webwinkel.model.Artikel;
 
@@ -17,33 +18,31 @@ public class ArtikelDao {
 	private EntityManager entityManager;
 
 	public ArtikelDao() {
-		System.out.println("ArtikelDao aangemaakt");
 	}
 
+	@Transactional
 	public void addArtikel(Artikel a) {
-		entityManager.getTransaction().begin();
 		entityManager.persist(a);
-		entityManager.getTransaction().commit();
 	}
 
+	@Transactional
 	public void updateArtikel(Artikel a) {
-		entityManager.getTransaction().begin();
 		entityManager.merge(a);
-		entityManager.getTransaction().commit();
 	}
 
+	@Transactional
 	public void removeArtikel(Artikel a) {
-		entityManager.getTransaction().begin();
 		entityManager.remove(a);
-		entityManager.getTransaction().commit();
 	}
 
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Artikel> getArtikelen() throws Exception {
 		Query query = entityManager.createQuery("SELECT a from Artikel as a");
 		return query.getResultList();
 	}
 
+	@Transactional
 	public Artikel getArtikel(int id) throws Exception {
 		Query query = entityManager.createQuery("SELECT a from Artikel as a where a.id = :id");
 		query.setParameter("id", id);

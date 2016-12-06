@@ -22,6 +22,11 @@
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
+			<c:if test="${login != null}">
+				<ul class="nav navbar-nav navbar-left">
+					<li><a href="/Webwinkel/Winkel/NieuwArtikel">Artikel toevoegen</a></li>
+				</ul>
+			</c:if>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/Webwinkel/Winkelwagen">Winkelwagen</a></li>
 			</ul>
