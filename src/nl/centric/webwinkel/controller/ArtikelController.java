@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import nl.centric.webwinkel.model.Artikel;
 import nl.centric.webwinkel.model.Magazijn;
@@ -30,6 +29,7 @@ public class ArtikelController {
 	private ArtikelService artikelService;
 	private static final String VIEW_WELKOM = "welkom";
 	private static final String VIEW_WINKEL = "winkel";
+	private static final String VIEW_ARTIKEL = "artikel";
 	private static final String VIEW_WINKELWAGEN = "winkelwagen";
 	private static final String VIEW_ERROR = "error";
 
@@ -50,6 +50,20 @@ public class ArtikelController {
 		HttpSession sessie = request.getSession();
 		sessie.setAttribute("magazijn", magazijn);
 		return VIEW_WINKEL;
+	}
+	
+	@RequestMapping(value = "/Winkel/Artikel", method = RequestMethod.GET)
+	public String doGetWinkelArtikel(@RequestParam("id") int id, HttpServletRequest request, HttpServletResponse response) {
+		Artikel artikel;
+		try {
+			artikel = artikelService.getArtikel(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return VIEW_ERROR;
+		}
+		HttpSession sessie = request.getSession();
+		sessie.setAttribute("artikel", artikel);
+		return VIEW_ARTIKEL;
 	}
 
 	@RequestMapping(value = "/Winkel", method = RequestMethod.POST)

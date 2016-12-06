@@ -5,20 +5,16 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import nl.centric.webwinkel.model.Artikel;
 import nl.centric.webwinkel.service.ArtikelService;
 
 public class ServiceTest {
 
+	@Autowired
 	private ArtikelService service;
-
-	@Before
-	public void init() {
-		service = new ArtikelService();
-	}
 
 	@Test
 	public void testAddArtikel() {
