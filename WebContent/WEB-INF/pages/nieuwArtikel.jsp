@@ -16,6 +16,20 @@
 <body>
 
 	<div class="page-header">
+		<c:if test="${login == null}">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/Webwinkel/Login">Inloggen</a></li>
+				</ul>
+			</div>
+		</c:if>
+		<c:if test="${login != null}">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav navbar-right">
+					<li><label>${login.gebruikersnaam}</label><a href="/Webwinkel/Logout">Uitloggen</a></li>
+				</ul>
+			</div>
+		</c:if>
 		<h1>Webwinkel Roellemans</h1>
 	</div>
 	<nav class="navbar navbar-default">
@@ -70,12 +84,12 @@
 					</c:if>
 				</tr>
 				<c:if test="${login.gebruikersnaam == 'Admin'}">
-				<tr>
-					<td
-						style='text-align: left; vertical-align: middle; font-weight: bold'></td>
-					<td style='text-align: left; vertical-align: middle'><input
-						type="submit" value="Artikel toevoegen" /></td>
-				</tr>
+					<tr>
+						<td
+							style='text-align: left; vertical-align: middle; font-weight: bold'></td>
+						<td style='text-align: left; vertical-align: middle'><input
+							type="submit" value="Artikel toevoegen" /></td>
+					</tr>
 				</c:if>
 			</table>
 		</form:form>

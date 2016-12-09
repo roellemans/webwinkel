@@ -17,6 +17,20 @@
 </head>
 <body>
 	<div class="page-header">
+		<c:if test="${login == null}">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/Webwinkel/Login">Inloggen</a></li>
+				</ul>
+			</div>
+		</c:if>
+		<c:if test="${login != null}">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav navbar-right">
+					<li><label>${login.gebruikersnaam}</label><a href="/Webwinkel/Logout">Uitloggen</a></li>
+				</ul>
+			</div>
+		</c:if>
 		<h1 align="center">Webwinkel Roellemans, uw winkelwagen</h1>
 	</div>
 
@@ -30,8 +44,10 @@
 	<div class="container">
 		<table class="table">
 			<thead>
-				<tr><td
-						style='text-align: left; vertical-align: middle; font-weight: bold'>Aantal stuks</td>
+				<tr>
+					<td
+						style='text-align: left; vertical-align: middle; font-weight: bold'>Aantal
+						stuks</td>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>ID</td>
 					<td
@@ -43,7 +59,8 @@
 			<tbody>
 				<c:forEach var="artikelen" items="${winkelwagen.artikelen}">
 					<tr>
-						<td style='text-align: left; vertical-align: middle'><input type="text" name="aantalStuks" value="1" /></td>
+						<td style='text-align: left; vertical-align: middle'><input
+							type="text" name="aantalStuks" value="1" /></td>
 						<td style='text-align: left; vertical-align: middle'>${artikelen.id}</td>
 						<td style='text-align: left; vertical-align: middle'>${artikelen.naam}</td>
 						<td style='text-align: left; vertical-align: middle'>${artikelen.prijs}</td>

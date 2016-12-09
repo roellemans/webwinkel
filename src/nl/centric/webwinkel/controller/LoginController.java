@@ -24,6 +24,7 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 	private static final String VIEW_LOGIN = "login";
+	private static final String VIEW_LOGOUT = "logout";
 	private static final String VIEW_WINKEL = "Winkel";
 	private static final String VIEW_ERROR = "error";
 
@@ -78,5 +79,10 @@ public class LoginController {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	@RequestMapping(value = "/Logout", method = RequestMethod.GET)
+	public String logout(){
+		return VIEW_LOGOUT;
 	}
 }

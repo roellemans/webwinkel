@@ -1,31 +1,40 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login Form</title>
+<title>Inlogpagina</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <form:form name="submitForm" method="POST">
-        <div align="center">
-            <table>
-                <tr>
-                    <td>Gebruikersnaam</td>
-                    <td><input type="text" name="gebruikersnaam" /></td>
-                </tr>
-                <tr>
-                    <td>Wachtwoord</td>
-                    <td><input type="password" name="wachtwoord" /></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="Submit" /></td>
-                </tr>
-            </table>
-            <div style="color: red">${error}</div>
-        </div>
-    </form:form>
+	<div class="jumbotron text-center">
+		<h1>Inlogpagina Webwinkel Roellemans</h1>
+	</div>
+
+	<form:form name="submitForm" method="POST">
+		<div align="center">
+			<table>
+				<tr>
+					<td>Gebruikersnaam</td>
+					<td><input type="text" name="gebruikersnaam" /></td>
+				</tr>
+				<tr>
+					<td>Wachtwoord</td>
+					<td><input type="password" name="wachtwoord" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+			<div style="color: red">${error}</div>
+		</div>
+	</form:form>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Welkomspagina Webwinkel Roellemans</title>
+<title>Uitlogpagina Webwinkel Roellemans</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -14,13 +14,8 @@
 <body>
 
 	<div class="jumbotron text-center">
-		<div class="container-fluid">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/Webwinkel/Login">Inloggen</a></li>
-			</ul>
-		</div>
-		<h1>Welkom op de pagina van Webwinkel Roellemans</h1>
-		<a href="/Webwinkel/Winkel">Klik hier om verder te gaan</a>
+		<h1>Bedankt voor het winkelen bij Webwinkel Roellemans</h1>
+		<a href="/Webwinkel">Klik hier om terug naar de hoofdpagina te gaan</a>
 	</div>
 
 </body>
