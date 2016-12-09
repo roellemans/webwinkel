@@ -22,7 +22,7 @@ public class NieuwArtikelController {
 
 	@Autowired
 	private ArtikelService artikelService;
-	private static final String VIEW_WINKEL = "winkel";
+	private static final String VIEW_WINKEL = "Winkel";
 	private static final String VIEW_NIEUWARTIKEL = "nieuwArtikel";
 	private static final String VIEW_ERROR = "error";
 
@@ -34,16 +34,25 @@ public class NieuwArtikelController {
 	@RequestMapping(value = "/Winkel/NieuwArtikel", method = RequestMethod.POST)
 	protected String doPostNieuwArtikel(@ModelAttribute(value="artikel") Artikel artikel,HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Magazijn magazijn = new Magazijn();
 		try {
 			artikelService.addArtikel(artikel);
-			magazijn = artikelService.vulMagazijn();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return VIEW_ERROR;
 		}
+		herlaadMagazijn(request, response);
+		return "redirect:/" + VIEW_WINKEL;
+	}
+	
+	private void herlaadMagazijn(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Magazijn magazijn = new Magazijn();
+		try {
+			magazijn = artikelService.vulMagazijn();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		HttpSession sessie = request.getSession();
 		sessie.setAttribute("magazijn", magazijn);
-		return VIEW_WINKEL;
 	}
 }

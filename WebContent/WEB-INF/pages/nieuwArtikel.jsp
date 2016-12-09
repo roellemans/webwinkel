@@ -31,10 +31,10 @@
 				<tr>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Naam</td>
-					<c:if test="${login == null}">
+					<c:if test="${login == null || login.gebruikersnaam != 'Admin'}">
 						<td style='text-align: left; vertical-align: middle'>${artikel.naam}</td>
 					</c:if>
-					<c:if test="${login != null}">
+					<c:if test="${login.gebruikersnaam == 'Admin'}">
 						<td style='text-align: left; vertical-align: middle'><input
 							type="text" name="naam" /></td>
 					</c:if>
@@ -42,10 +42,10 @@
 				<tr>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Prijs</td>
-					<c:if test="${login == null}">
+					<c:if test="${login == null || login.gebruikersnaam != 'Admin'}">
 						<td style='text-align: left; vertical-align: middle'>${artikel.prijs}</td>
 					</c:if>
-					<c:if test="${login != null}">
+					<c:if test="${login.gebruikersnaam == 'Admin'}">
 						<td style='text-align: left; vertical-align: middle'><input
 							type="text" name="prijs" /></td>
 					</c:if>
@@ -54,7 +54,7 @@
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Aantal
 						in voorraad</td>
-					<c:if test="${login == null}">
+					<c:if test="${login == null || login.gebruikersnaam != 'Admin'}">
 						<c:if test="${artikel.aantal == 0 }">
 							<td style='text-align: left; vertical-align: middle'>Niet op
 								voorraad</td>
@@ -64,12 +64,12 @@
 								voorraad</td>
 						</c:if>
 					</c:if>
-					<c:if test="${login != null}">
+					<c:if test="${login.gebruikersnaam == 'Admin'}">
 						<td style='text-align: left; vertical-align: middle'><input
 							type="text" name="aantal" /></td>
 					</c:if>
 				</tr>
-				<c:if test="${login != null}">
+				<c:if test="${login.gebruikersnaam == 'Admin'}">
 				<tr>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'></td>

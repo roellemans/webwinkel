@@ -22,7 +22,7 @@
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-			<c:if test="${login != null}">
+			<c:if test="${login.gebruikersnaam == 'Admin'}">
 				<ul class="nav navbar-nav navbar-left">
 					<li><a href="/Webwinkel/Winkel/NieuwArtikel">Artikel toevoegen</a></li>
 				</ul>
@@ -73,7 +73,7 @@
 								<td style='text-align: left; vertical-align: middle'>Niet
 									op voorraad</td>
 							</c:if>
-							<c:if test="${login != null}">
+							<c:if test="${login.gebruikersnaam == 'Admin'}">
 								<td style='text-align: left; vertical-align: middle'><a
 									href="/Webwinkel/Winkel/Artikel?id=${voorraad.id}">Bewerken</a></td>
 							</c:if>

@@ -30,8 +30,8 @@ public class ArtikelController {
 	private static final String VIEW_WELKOM = "welkom";
 	private static final String VIEW_WINKEL = "winkel";
 	private static final String VIEW_ARTIKEL = "artikel";
-	private static final String VIEW_WINKELWAGEN = "winkelwagen";
 	private static final String VIEW_ERROR = "error";
+	private static final String VIEW_WINKELWAGEN = "winkelwagen";
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
@@ -95,5 +95,10 @@ public class ArtikelController {
 		winkelwagen.setInhoud(map);
 		session.setAttribute("winkelwagen", winkelwagen);
 		return VIEW_WINKEL;
+	}
+	
+	@RequestMapping(value = "/Winkelwagen", method = RequestMethod.GET)
+	public String doGetWinkelwagen(HttpServletRequest request, HttpServletResponse response) {
+		return VIEW_WINKELWAGEN;
 	}
 }

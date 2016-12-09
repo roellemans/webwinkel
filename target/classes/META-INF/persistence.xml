@@ -5,6 +5,7 @@
 	<persistence-unit name="Webwinkel">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>nl.centric.webwinkel.model.Artikel</class>
+		<class>nl.centric.webwinkel.model.Login</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/webwinkelDB" />
 			<property name="javax.persistence.jdbc.user" value="root" />

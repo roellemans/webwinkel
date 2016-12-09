@@ -1,7 +1,12 @@
 package nl.centric.webwinkel.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Login {
 
+	@Id
 	private String gebruikersnaam;
 	private String wachtwoord;
 	
