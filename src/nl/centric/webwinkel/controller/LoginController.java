@@ -82,7 +82,13 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/Logout", method = RequestMethod.GET)
-	public String logout(){
+	public String logout(HttpServletRequest request, HttpServletResponse response){
+		
+		// kan dit in een statement?
+		// request.getSession().invalidate(); werkt niet 
+		request.getSession().setAttribute("magazijn", null);
+		request.getSession().setAttribute("winkelwagen", null);
+		request.getSession().setAttribute("login", null);
 		return VIEW_LOGOUT;
 	}
 }
