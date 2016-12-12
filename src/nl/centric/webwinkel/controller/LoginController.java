@@ -27,13 +27,14 @@ public class LoginController {
 	private static final String VIEW_LOGOUT = "logout";
 	private static final String VIEW_WINKEL = "Winkel";
 	private static final String VIEW_ERROR = "error";
+	private static final String VIEW_REGISTREER = "registreer";
 
 	@RequestMapping(value = "/Login", method = RequestMethod.GET)
-	public String init(){
+	public String init() {
 		return VIEW_LOGIN;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/Login", method = RequestMethod.POST)
 	public String submit(@RequestParam("gebruikersnaam") String gebruikersnaam,
 			@RequestParam("wachtwoord") String wachtwoord, HttpServletRequest request, HttpServletResponse response) {
 
@@ -50,8 +51,8 @@ public class LoginController {
 			return VIEW_LOGIN;
 		}
 	}
-	
-	private String vulMagazijn(HttpServletRequest request, HttpServletResponse response){
+
+	private String vulMagazijn(HttpServletRequest request, HttpServletResponse response) {
 		Magazijn magazijn = new Magazijn();
 		try {
 			magazijn = artikelService.vulMagazijn();
@@ -67,10 +68,10 @@ public class LoginController {
 	private boolean loginIsGeldig(HttpServletRequest request, Login login) {
 		try {
 			List<Login> loginLijst = loginService.getAllLogins();
-			for(Login log : loginLijst){
-				if (log.getGebruikersnaam().equals(login.getGebruikersnaam()) &&
-					log.getWachtwoord().equals(login.getWachtwoord())){
-					return true;					
+			for (Login log : loginLijst) {
+				if (log.getGebruikersnaam().equals(login.getGebruikersnaam())
+						&& log.getWachtwoord().equals(login.getWachtwoord())) {
+					return true;
 				}
 			}
 			request.setAttribute("error", "Gebruikersnaam en/of wachtwoord komen niet overeen");
@@ -80,15 +81,38 @@ public class LoginController {
 			return false;
 		}
 	}
-	
+
 	@RequestMapping(value = "/Logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request, HttpServletResponse response){
-		
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+
 		// kan dit in een statement?
-		// request.getSession().invalidate(); werkt niet 
+		// request.getSession().invalidate(); werkt niet
 		request.getSession().setAttribute("magazijn", null);
 		request.getSession().setAttribute("winkelwagen", null);
 		request.getSession().setAttribute("login", null);
 		return VIEW_LOGOUT;
+	}
+
+	@RequestMapping(value = "/Registreer", method = RequestMethod.GET)
+	public String doGetRegistreren(HttpServletRequest request, HttpServletResponse response) {
+		return VIEW_REGISTREER;
+	}
+
+	@RequestMapping(value = "/Registreer", method = RequestMethod.POST)
+	public String doPostRegistreren(@RequestParam("gebruikersnaam") String gebruikersnaam,
+			@RequestParam("wachtwoord") String wachtwoord, @RequestParam("hwachtwoord") String hwachtwoord,
+			@RequestParam("email") String email, HttpServletRequest request, HttpServletResponse response) {
+
+		System.out.println("wachtwoord = " + wachtwoord);
+		System.out.println("h wachtwoord = " + hwachtwoord);
+		if (wachtwoord.equals(hwachtwoord)) {
+			Login login = new Login(gebruikersnaam, wachtwoord, email);
+			loginService.addLogin(login);
+			return "redirect:/Login";
+		} else {
+			request.setAttribute("error", "Wachtwoorden komen niet overeen!");
+			return VIEW_REGISTREER;
+		}
+		
 	}
 }

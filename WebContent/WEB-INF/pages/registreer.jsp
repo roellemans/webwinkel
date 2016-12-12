@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Inlogpagina</title>
+<title>Registreren</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -14,10 +14,10 @@
 </head>
 <body>
 	<div class="jumbotron text-center">
-		<h1>Inlogpagina Webwinkel Roellemans</h1>
+		<h1>Registreren bij Webwinkel Roellemans</h1>
 	</div>
 
-	<form:form name="submitForm" method="POST">
+	<form:form name="registreerForm" method="POST">
 		<div align="center">
 			<table>
 				<tr>
@@ -25,16 +25,20 @@
 					<td><input type="text" name="gebruikersnaam" /></td>
 				</tr>
 				<tr>
+					<td>Emailadres</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+				<tr>
 					<td>Wachtwoord</td>
 					<td><input type="password" name="wachtwoord" /></td>
 				</tr>
 				<tr>
-					<td></td>
-					<td><input type="submit" value="Submit" /></td>
+					<td>Herhaal wachtwoord</td>
+					<td><input type="password" name="hwachtwoord" /></td>
 				</tr>
 				<tr>
-				<td></td>
-					<td><a href="/Webwinkel/Registreer">Registreren</a> </td>
+					<td></td>
+					<td><input type="submit" value="Registreer" onclick="controleer(registreerForm)"/></td>
 				</tr>
 			</table>
 			<div style="color: red">${error}</div>

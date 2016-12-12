@@ -9,12 +9,19 @@ public class Login {
 	@Id
 	private String gebruikersnaam;
 	private String wachtwoord;
-	
+	private String email;
+
 	public Login() {}
 	
 	public Login(String gebruikersnaam, String wachtwoord){
 		this.gebruikersnaam = gebruikersnaam;
 		this.wachtwoord = wachtwoord;
+	}
+	
+	public Login(String gebruikersnaam, String wachtwoord, String email){
+		this.gebruikersnaam = gebruikersnaam;
+		this.wachtwoord = wachtwoord;
+		this.email = email;
 	}
 
 	public String getGebruikersnaam() {
@@ -32,7 +39,13 @@ public class Login {
 	public void setWachtwoord(String wachtwoord) {
 		this.wachtwoord = wachtwoord;
 	}
-
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}	
 
 }
