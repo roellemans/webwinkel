@@ -103,8 +103,6 @@ public class LoginController {
 			@RequestParam("wachtwoord") String wachtwoord, @RequestParam("hwachtwoord") String hwachtwoord,
 			@RequestParam("email") String email, HttpServletRequest request, HttpServletResponse response) {
 
-		System.out.println("wachtwoord = " + wachtwoord);
-		System.out.println("h wachtwoord = " + hwachtwoord);
 		if (wachtwoord.equals(hwachtwoord)) {
 			Login login = new Login(gebruikersnaam, wachtwoord, email);
 			loginService.addLogin(login);
