@@ -30,14 +30,14 @@
 		</property>
 	</bean>
 
-	<bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource"
+	<!-- <bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource"
 		id="dataSource">
 		<property value="com.mysql.jdbc.Driver" name="driverClassName" />
 		<property value="jdbc:mysql://localhost:3306/webwinkelDB"
 			name="url" />
 		<property value="root" name="username" />
 		<property value="test1234" name="password" />
-	</bean>
+	</bean> -->
 
 	<!-- EntityManagerFactory -->
 	<bean
