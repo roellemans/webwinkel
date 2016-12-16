@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nl.centric.webwinkel.dao.LoginDao;
-import nl.centric.webwinkel.model.Login;
+import nl.centric.webwinkel.model.Users;
 
 @Service
 public class LoginService {
@@ -17,16 +17,16 @@ public class LoginService {
 	private LoginDao loginDao;
 	
 	@Transactional
-	public void addLogin(Login login){
-		loginDao.addLogin(login);
+	public void addUser(Users user){
+		loginDao.addUser(user);
 	}
 	@Transactional
-	public List<Login> getAllLogins() throws Exception{
-		return loginDao.getAllLogins();
+	public List<Users> getAllUsers() throws Exception{
+		return loginDao.getAllUsers();
 	}
 	@Transactional
-	public Login getLogin(String gebruikersnaam) throws Exception{
-		return loginDao.getLogin(gebruikersnaam);
+	public Users getUser(String gebruikersnaam) throws Exception{
+		return loginDao.getUser(gebruikersnaam);
 	}
 
 }

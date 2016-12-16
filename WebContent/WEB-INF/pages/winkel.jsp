@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="javax.sql.*"%>
@@ -20,7 +21,12 @@
 	<div class="page-header">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav navbar-right">
-					<sec:authentication property="name"/>
+					<sec:authentication property="name"/><br/>
+					<c:url var="logoutUrl" value="/logout"/>
+					<form action="${logoutUrl}" method="post">
+					    <input type="submit" value="Uitloggen"/>
+					    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					</form>
 				</ul>
 			</div>
 		<h1 align="center">Webwinkel Roellemans voor al uw sportartikelen</h1>

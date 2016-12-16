@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import nl.centric.webwinkel.model.Login;
+import nl.centric.webwinkel.model.Users;
 
 @Repository
 public class LoginDao {
@@ -21,21 +21,21 @@ public class LoginDao {
 	}
 
 	@Transactional
-	public void addLogin(Login login) {
-		entityManager.persist(login);
+	public void addUser(Users user) {
+		entityManager.persist(user);
 	}
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public List<Login> getAllLogins() throws Exception {
-		Query query = entityManager.createQuery("SELECT l from Login as l");
+	public List<Users> getAllUsers() throws Exception {
+		Query query = entityManager.createQuery("SELECT u from Users as u");
 		return query.getResultList();
 	}
 
 	@Transactional
-	public Login getLogin(String gebruikersnaam) throws Exception {
-		Query query = entityManager.createQuery("SELECT l from Login as l where l.gebruikersnaam = :gebruikersnaam");
+	public Users getUser(String gebruikersnaam) throws Exception {
+		Query query = entityManager.createQuery("SELECT u from Users as u where u.username = :gebruikersnaam");
 		query.setParameter("gebruikersnaam", gebruikersnaam);
-		return (Login) query.getSingleResult();
+		return (Users) query.getSingleResult();
 	}
 }

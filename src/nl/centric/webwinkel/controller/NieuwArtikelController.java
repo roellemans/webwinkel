@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class NieuwArtikelController {
 		return VIEW_NIEUWARTIKEL;
 	}
 
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/Winkel/NieuwArtikel", method = RequestMethod.POST)
 	protected String doPostNieuwArtikel(@ModelAttribute(value="artikel") Artikel artikel,HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
