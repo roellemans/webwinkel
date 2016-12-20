@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import nl.centric.webwinkel.model.Authorities;
 import nl.centric.webwinkel.model.Users;
 
 @Repository
@@ -23,6 +24,11 @@ public class LoginDao {
 	@Transactional
 	public void addUser(Users user) {
 		entityManager.persist(user);
+	}
+	
+	@Transactional
+	public void addAuthority(Authorities authority) {
+		entityManager.persist(authority);
 	}
 
 	@Transactional

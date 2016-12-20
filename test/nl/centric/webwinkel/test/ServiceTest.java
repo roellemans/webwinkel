@@ -6,11 +6,16 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import nl.centric.webwinkel.model.Artikel;
 import nl.centric.webwinkel.service.ArtikelService;
 
+@RunWith(SpringJUnit4ClassRunner.class)  
+@ContextConfiguration(locations = { "classpath:/mvc-dispatcher-servlet.xml" })
 public class ServiceTest {
 
 	@Autowired

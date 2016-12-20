@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nl.centric.webwinkel.dao.LoginDao;
+import nl.centric.webwinkel.model.Authorities;
 import nl.centric.webwinkel.model.Users;
 
 @Service
@@ -20,6 +21,12 @@ public class LoginService {
 	public void addUser(Users user){
 		loginDao.addUser(user);
 	}
+	
+	@Transactional
+	public void addAuthority(Authorities authority){
+		loginDao.addAuthority(authority);
+	}
+	
 	@Transactional
 	public List<Users> getAllUsers() throws Exception{
 		return loginDao.getAllUsers();

@@ -20,7 +20,7 @@
 
 	<context:annotation-config />
 	<context:component-scan
-		base-package=" nl.centric.webwinkel.dao, nl.centric.webwinkel.service, nl.centric.webwinkel.controller" />
+		base-package=" nl.centric.webwinkel.dao, nl.centric.webwinkel.service, nl.centric.webwinkel.controller, nl.centric.webwinkel.test" />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<sec:global-method-security pre-post-annotations="enabled" />
