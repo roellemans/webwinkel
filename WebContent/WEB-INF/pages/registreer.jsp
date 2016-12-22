@@ -14,27 +14,19 @@
 </head>
 <body>
 	<div class="jumbotron text-center">
-		<h1>Registreren bij Webwinkel Roellemans</h1>
+		<h1 align="center">Registreren bij Webwinkel Roellemans</h1>
 	</div>
 
-	<form:form name="registreerForm" method="POST">
+	<form:form name="registreerForm" method="POST" commandName="userForm">
 		<div align="center">
 			<table>
 				<tr>
 					<td>Gebruikersnaam</td>
-					<td><input type="text" name="gebruikersnaam" /></td>
-				</tr>
-				<tr>
-					<td>Emailadres</td>
-					<td><input type="text" name="email" /></td>
+					<td><input type="text" name="username" /></td>
 				</tr>
 				<tr>
 					<td>Wachtwoord</td>
-					<td><input type="password" name="wachtwoord" /></td>
-				</tr>
-				<tr>
-					<td>Herhaal wachtwoord</td>
-					<td><input type="password" name="hwachtwoord" /></td>
+					<td><input type="password" name="password" /></td>
 				</tr>
 				<tr>
 					<td></td>

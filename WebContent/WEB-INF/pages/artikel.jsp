@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,18 @@
 <body>
 
 	<div class="page-header">
-		<h1>Webwinkel Roellemans</h1>
+	<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-right">
+				<sec:authentication property="name" />
+				<br />
+				<c:url var="logoutUrl" value="/logout" />
+				<form action="${logoutUrl}" method="post">
+					<input type="submit" value="Uitloggen" /> <input type="hidden"
+						name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>
+			</ul>
+		</div>
+		<h1 align="center">Webwinkel Roellemans</h1>
 	</div>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
