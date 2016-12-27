@@ -36,12 +36,12 @@
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-			<c:if test="${login.gebruikersnaam == 'Admin'}">
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<ul class="nav navbar-nav navbar-left">
 					<li><a href="/Webwinkel/Winkel/NieuwArtikel">Artikel
 							toevoegen</a></li>
 				</ul>
-			</c:if>
+			</sec:authorize>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/Webwinkel/Winkelwagen">Winkelwagen</a></li>
 			</ul>
@@ -63,10 +63,6 @@
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Naar
 						winkelwagen</td>
-					<c:if test="${login != null}">
-						<td
-							style='text-align: left; vertical-align: middle; font-weight: bold'></td>
-					</c:if>
 				</tr>
 			</thead>
 			<tbody>
@@ -89,10 +85,6 @@
 							<c:if test="${voorraad.aantal < 1}">
 								<td style='text-align: left; vertical-align: middle'>Niet
 									op voorraad</td>
-							</c:if>
-							<c:if test="${login.gebruikersnaam == 'Admin'}">
-								<td style='text-align: left; vertical-align: middle'><a
-									href="/Webwinkel/Winkel/Artikel?id=${voorraad.id}">Bewerken</a></td>
 							</c:if>
 						</tr>
 					</form>

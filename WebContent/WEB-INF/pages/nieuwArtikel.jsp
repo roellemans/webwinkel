@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
@@ -16,20 +18,26 @@
 <body>
 
 	<div class="page-header">
-		<c:if test="${login == null}">
+		<sec:authorize access="hasRole('ROLE_USER')">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/Webwinkel/Login">Inloggen</a></li>
 				</ul>
 			</div>
-		</c:if>
-		<c:if test="${login != null}">
+		</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav navbar-right">
-					<li><label>${login.gebruikersnaam}</label><a href="/Webwinkel/Logout">Uitloggen</a></li>
+					<sec:authentication property="name" />
+					<br />
+					<c:url var="logoutUrl" value="/logout" />
+					<form action="${logoutUrl}" method="post">
+						<input type="submit" value="Uitloggen" /> <input type="hidden"
+							name="${_csrf.parameterName}" value="${_csrf.token}" />
+					</form>
 				</ul>
 			</div>
-		</c:if>
+		</sec:authorize>
 		<h1>Webwinkel Roellemans</h1>
 	</div>
 	<nav class="navbar navbar-default">
@@ -45,30 +53,30 @@
 				<tr>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Naam</td>
-					<c:if test="${login == null || login.gebruikersnaam != 'Admin'}">
+					<sec:authorize access="hasRole('ROLE_USER')">
 						<td style='text-align: left; vertical-align: middle'>${artikel.naam}</td>
-					</c:if>
-					<c:if test="${login.gebruikersnaam == 'Admin'}">
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<td style='text-align: left; vertical-align: middle'><input
 							type="text" name="naam" /></td>
-					</c:if>
+					</sec:authorize>
 				</tr>
 				<tr>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Prijs</td>
-					<c:if test="${login == null || login.gebruikersnaam != 'Admin'}">
+					<sec:authorize access="hasRole('ROLE_USER')">
 						<td style='text-align: left; vertical-align: middle'>${artikel.prijs}</td>
-					</c:if>
-					<c:if test="${login.gebruikersnaam == 'Admin'}">
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<td style='text-align: left; vertical-align: middle'><input
 							type="text" name="prijs" /></td>
-					</c:if>
+					</sec:authorize>
 				</tr>
 				<tr>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Aantal
 						in voorraad</td>
-					<c:if test="${login == null || login.gebruikersnaam != 'Admin'}">
+					<sec:authorize access="hasRole('ROLE_USER')">
 						<c:if test="${artikel.aantal == 0 }">
 							<td style='text-align: left; vertical-align: middle'>Niet op
 								voorraad</td>
@@ -77,20 +85,20 @@
 							<td style='text-align: left; vertical-align: middle'>Op
 								voorraad</td>
 						</c:if>
-					</c:if>
-					<c:if test="${login.gebruikersnaam == 'Admin'}">
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<td style='text-align: left; vertical-align: middle'><input
 							type="text" name="aantal" /></td>
-					</c:if>
+					</sec:authorize>
 				</tr>
-				<c:if test="${login.gebruikersnaam == 'Admin'}">
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<tr>
 						<td
 							style='text-align: left; vertical-align: middle; font-weight: bold'></td>
 						<td style='text-align: left; vertical-align: middle'><input
 							type="submit" value="Artikel toevoegen" /></td>
 					</tr>
-				</c:if>
+				</sec:authorize>
 			</table>
 		</form:form>
 	</div>
