@@ -53,6 +53,8 @@
 			<thead>
 				<tr>
 					<td
+						style='text-align: left; vertical-align: middle; font-weight: bold'></td>
+					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>ID</td>
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold; display: none'>ID</td>
@@ -71,6 +73,9 @@
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 						<tr>
+							<td
+								style='text-align: left; vertical-align: middle'><img
+								style="border: 0px;" src="/images/sportschoen.png"></td>
 							<td
 								style='text-align: left; vertical-align: middle; display: none'><input
 								type="text" name="id" value="${voorraad.id}" /></td>
