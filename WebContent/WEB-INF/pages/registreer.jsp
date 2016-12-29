@@ -30,7 +30,8 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Registreer" onclick="controleer(registreerForm)"/></td>
+					<td><input type="submit" value="Registreer"
+						onclick="controleer(registreerForm)" /></td>
 				</tr>
 			</table>
 			<div style="color: red">${error}</div>

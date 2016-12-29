@@ -15,7 +15,8 @@
 
 	<div class="jumbotron text-center">
 		<h1>Bedankt voor het winkelen bij Webwinkel Roellemans</h1>
-		<a href="/Webwinkel">Klik hier om terug naar de hoofdpagina te gaan</a>
+		<a href="/Webwinkel">Klik hier om terug naar de hoofdpagina te
+			gaan</a>
 	</div>
 
 </body>

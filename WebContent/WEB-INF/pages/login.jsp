@@ -17,7 +17,8 @@
 	<div class="jumbotron text-center">
 		<h1>Inlogpagina Webwinkel Roellemans</h1>
 	</div>
-	<form:form action="j_spring_security_check" name="submitForm" method="POST">
+	<form:form action="j_spring_security_check" name="submitForm"
+		method="POST">
 		<div align="center">
 			<table>
 				<tr>
@@ -33,8 +34,8 @@
 					<td><input type="submit" value="Submit" /></td>
 				</tr>
 				<tr>
-				<td></td>
-					<td><a href="/Webwinkel/Registreer">Registreren</a> </td>
+					<td></td>
+					<td><a href="/Webwinkel/Registreer">Registreren</a></td>
 				</tr>
 			</table>
 			<div style="color: red">${error}</div>

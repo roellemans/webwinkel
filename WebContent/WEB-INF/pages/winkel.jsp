@@ -73,9 +73,9 @@
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 						<tr>
-							<td
-								style='text-align: left; vertical-align: middle'><img
-								style="border: 0px;" src="/images/sportschoen.png"></td>
+							<td style='text-align: left; vertical-align: middle'><img
+								border="1px" src="/images/${voorraad.naam}.png" width="70"
+								height="70"></td>
 							<td
 								style='text-align: left; vertical-align: middle; display: none'><input
 								type="text" name="id" value="${voorraad.id}" /></td>
