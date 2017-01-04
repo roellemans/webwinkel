@@ -53,7 +53,7 @@
 					<td
 						style='text-align: left; vertical-align: middle; font-weight: bold'>Naam</td>
 					<sec:authorize access="hasRole('ROLE_USER')">
-						<td style='text-align: left; vertical-align: middle'>${artikel.naam}</td>
+						<td style='text-align: left; vertical-align: middle'><label id="${artikel.naam}">${artikel.naam}</label></td>
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<td style='text-align: left; vertical-align: middle'><input

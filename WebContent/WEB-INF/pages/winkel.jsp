@@ -81,7 +81,7 @@
 								type="text" name="id" value="${voorraad.id}" /></td>
 							<td style='text-align: left; vertical-align: middle'>${voorraad.id}</td>
 							<td style='text-align: left; vertical-align: middle'><a
-								href="/Webwinkel/Winkel/Artikel?id=${voorraad.id}">${voorraad.naam}</a></td>
+								href="/Webwinkel/Winkel/Artikel?id=${voorraad.id}" id="${voorraad.naam}">${voorraad.naam}</a></td>
 							<td style='text-align: left; vertical-align: middle'>${voorraad.prijs}</td>
 							<c:if test="${voorraad.aantal > 0}">
 								<td style='text-align: left; vertical-align: middle'><input

@@ -1,7 +1,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:sec="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
@@ -23,8 +22,9 @@
 		base-package=" nl.centric.webwinkel.dao, nl.centric.webwinkel.service, nl.centric.webwinkel.controller, nl.centric.webwinkel.test" />
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<sec:global-method-security pre-post-annotations="enabled" />
-	
+	<sec:global-method-security
+		pre-post-annotations="enabled" />
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -35,7 +35,7 @@
 		</property>
 	</bean>
 
-	 <bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource"
+	<bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource"
 		id="dataSource">
 		<property value="com.mysql.jdbc.Driver" name="driverClassName" />
 		<property value="jdbc:mysql://localhost:3306/webwinkelDB"

@@ -31,14 +31,14 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Submit" /></td>
+					<td><input type="submit" value="Submit" id="Submit"/></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td><a href="/Webwinkel/Registreer">Registreren</a></td>
 				</tr>
 			</table>
-			<div style="color: red">${error}</div>
+			<div id="foutmelding" style="color: red">${error}</div>
 		</div>
 	</form:form>
 </body>

@@ -23,13 +23,13 @@ public class ServiceTest {
 
 	@Test
 	public void testAddArtikel() {
-		service.addArtikel(maakArtikel("sporthoed"));
+		service.addArtikel(maakArtikel("sportlepel"));
 	}
 
 	@Test
 	public void testGetArtikel() {
 		try {
-			Artikel a = service.getArtikel(1);
+			Artikel a = service.getArtikel(2);
 			assertTrue(a.getNaam().equals("sportschoen"));
 		} catch (Exception e) {
 			Assert.fail();
@@ -49,8 +49,8 @@ public class ServiceTest {
 	@Test
 	public void testUpdateArtikel() {
 		try {
-			Artikel a = service.getArtikel(1);
-			a.setNaam("sporthoed");
+			Artikel a = service.getArtikel(4);
+			a.setNaam("sportkrantje");
 			service.updateArtikel(a);
 		} catch (Exception e) {
 			Assert.fail();
